@@ -23,7 +23,6 @@ jobs:
           proj-path: graph/graphql-api.csproj
 
       - run: echo "${{steps.get-version.outputs.version-prefix}}" 
-      - run: echo "${{steps.get-version.outputs.assembly-version}}" 
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -39,7 +38,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: pl09
-          IMAGE_TAG: 1.0.1
+          IMAGE_TAG: ${{ steps.get-version.outputs.version }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
