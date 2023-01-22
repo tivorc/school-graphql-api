@@ -24,5 +24,4 @@ if (app.Environment.IsDevelopment())
   );
 }
 app.UseGraphQL<SchoolSchema>("/api/graphql");
-app.UseHttpsRedirection();
 app.Run();
