@@ -16,6 +16,15 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: Get .NET SDK project versions
+        id: get-version
+        uses: kzrnm/get-net-sdk-project-versions-action@v1
+        with:
+          proj-path: graph/graphql-api.csproj
+
+      - run: echo "${{steps.get-version.outputs.version-prefix}}" 
+      - run: echo "${{steps.get-version.outputs.assembly-version}}" 
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
