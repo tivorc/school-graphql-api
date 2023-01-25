@@ -11,6 +11,6 @@ public class Queries : ObjectGraphType<object>
     Field<NonNullGraphType<ListGraphType<NonNullGraphType<StudentType>>>>("students")
       .Resolve(context => Student.GetList());
     Field<NonNullGraphType<StringGraphType>>("hello")
-      .Resolve(context => "Hello World!");
+      .Resolve(context => "Hello World from la Cahuide!");
   }
 }
