@@ -10,5 +10,7 @@ public class Queries : ObjectGraphType<object>
     Name = "Queries";
     Field<NonNullGraphType<ListGraphType<NonNullGraphType<StudentType>>>>("students")
       .Resolve(context => Student.GetList());
+    Field<NonNullGraphType<StringGraphType>>("hello")
+      .Resolve(context => "Hello World!");
   }
 }
