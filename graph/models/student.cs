@@ -9,6 +9,7 @@ public class Student : Person
   public static IEnumerable<Student> GetList() {
     return new List<Student>
     {
+      new Student(Guid.NewGuid(), "Monago", "Cruzado", new DateTime(1997, 3, 29)),
       new Student(Guid.NewGuid(), "John", "Gonzales", new DateTime(1998, 3, 29)),
       new Student(Guid.NewGuid(), "Jane", "Doe", new DateTime(1994, 10, 13)),
       new Student(Guid.NewGuid(), "Sandra", "Smith", new DateTime(1992, 10, 1)),
