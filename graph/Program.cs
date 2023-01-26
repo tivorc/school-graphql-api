@@ -11,11 +11,12 @@ builder.Services.AddGraphQL(b => b
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddCors(options =>
 {
-  options.AddDefaultPolicy(
-    policy =>
-    {
-      policy.WithOrigins("http://localhost:5173/").AllowAnyMethod().AllowAnyHeader();
-    });
+  options.AddDefaultPolicy(builder =>
+  {
+    builder.AllowAnyOrigin()
+      .AllowAnyMethod()
+      .AllowAnyHeader();
+  });
 });
 
 var app = builder.Build();
