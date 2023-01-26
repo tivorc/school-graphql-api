@@ -9,6 +9,14 @@ builder.Services.AddGraphQL(b => b
   .AddGraphTypes(typeof(SchoolSchema).Assembly)
 );
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddCors(options =>
+{
+  options.AddDefaultPolicy(
+    policy =>
+    {
+      policy.WithOrigins("http://localhost:*");
+    });
+});
 
 var app = builder.Build();
 
@@ -23,5 +31,6 @@ if (app.Environment.IsDevelopment())
     }
   );
 }
+app.UseCors();
 app.UseGraphQL<SchoolSchema>("/api/graphql");
 app.Run();
