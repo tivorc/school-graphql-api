@@ -1,7 +1,19 @@
 using School.GraphQL;
 using GraphQL;
+using School.DB;
+using School.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var server = builder.Configuration["Database:Server"];
+var user = builder.Configuration["Database:User"];
+var password = builder.Configuration["Database:Password"];
+var database = builder.Configuration["Database:Name"];
+builder.Services.AddSingleton(
+  new MySqlConnectionManager(server, user, password, database)
+);
+
+builder.Services.AddSingleton<StudentService>();
 
 builder.Services.AddGraphQL(b => b
   .AddSchema<SchoolSchema>()

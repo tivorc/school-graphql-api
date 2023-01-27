@@ -7,11 +7,7 @@ COPY ./graph/graphql-api.csproj .
 RUN dotnet restore
 
 # copy everything else and build app
-COPY ./graph/graphql .
-COPY ./graph/models .
-COPY ./graph/Properties .
-COPY ./graph/appsettings.json .
-COPY ./graph/Program.cs .
+COPY ./graph/ .
 WORKDIR /source/
 RUN dotnet publish -c release -o /app --no-restore
 

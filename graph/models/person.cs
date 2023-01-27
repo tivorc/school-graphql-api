@@ -3,15 +3,15 @@ namespace School.Models;
 public class Person
 {
   public Guid Id { get; set; }
-  public string Name { get; set; }
+  public string Names { get; set; }
   public string Surname { get; set; }
   public DateTime DateOfBirth { get; set; }
   public string? Email { get; set; }
 
-  public Person(Guid id, string name, string surname, DateTime dateOfBirth)
+  public Person(Guid id, string names, string surname, DateTime dateOfBirth)
   {
     Id = id;
-    Name = name;
+    Names = names;
     Surname = surname;
     DateOfBirth = dateOfBirth;
   }
